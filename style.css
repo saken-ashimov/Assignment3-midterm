@@ -1,0 +1,258 @@
+:root {
+  --forest: #16211b;
+  --moss: #3f5a3c;
+  --fog: #e4e7dc;
+  --bark: #2b2118;
+  --amber: #d6931f;
+  --eye-green: #8fb339;
+  --ash: #55594f;
+  --nav-height: 4rem;
+
+}
+
+html {
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  font-family: "Karla", sans-serif;
+  background: var(--fog);
+  color: var(--bark);
+  line-height: 1.6;
+} 
+
+h1, h2, h3, .brand {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+}
+
+img { max-width: 100%; height: auto; }
+
+.section-title {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.site-nav { background: var(--forest); }
+.site-nav .brand { color: var(--amber); font-size: 1.25rem; }
+.site-nav .nav-link { color: var(--fog); }
+.site-nav .nav-link:hover { color: var(--amber); }
+.site-nav .nav-link.active { color: var(--amber) !important; font-weight: 700; }
+
+.hero {
+  background: radial-gradient(circle at 70% 40%, #263a2c 0%, var(--forest) 60%);
+  color: var(--fog);
+  padding: 3rem 0 4rem;
+}
+.hero-title { font-size: 2rem; line-height: 1.2; }
+.hero-lead { color: #c9cfbd; max-width: 34rem; }
+
+.btn-ember {
+  background: var(--amber);
+  color: var(--forest);
+  border: 0;
+  font-weight: 700;
+}
+.btn-ember:hover { background: #ecab3a; color: var(--forest); }
+
+.eyes {
+  display: inline-flex;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+}
+html {
+  scroll-padding-top: 76px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+.eye {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #0c120e 0 22%, var(--eye-green) 24% 58%, #4b5a1c 62% 100%);
+  box-shadow: 0 0 40px rgba(143, 179, 57, 0.45);
+  animation: open-eye 1.6s ease-out 0.3s both;
+}
+@keyframes open-eye {
+  from { transform: scaleY(0.04); opacity: 0.2; }
+  to   { transform: scaleY(1); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eye { animation: none; }
+}
+
+.facts {
+  background: var(--forest);
+  color: var(--fog);
+  border-radius: 6px;
+  border-left: 6px solid var(--amber);
+}
+.facts-title { font-size: 1.2rem; margin-bottom: 1rem; color: var(--amber); }
+.facts .border-bottom { border-color: rgba(228, 231, 220, 0.25) !important; }
+
+.pullquote {
+  border-left: 4px solid var(--moss);
+  padding-left: 1rem;
+  font-size: 1.25rem;
+  color: var(--ash);
+}
+
+.cast {
+  background: var(--bark);
+  color: var(--fog);
+  padding: 2.5rem 1rem;
+}
+.cast-heading {
+  font-size: 1.6rem;
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+.cast-intro {
+  text-align: center;
+  color: #bfc4b3;
+  margin: 0 0 1.5rem;
+}
+.cast-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.cast-item {
+  background: rgba(228, 231, 220, 0.07);
+  border-top: 4px solid var(--amber);
+  padding: 1rem 1.25rem;
+}
+.cast-name { font-size: 1.3rem; margin: 0; }
+.cast-actor { color: var(--eye-green); font-weight: 700; margin: 0.25rem 0 0.5rem; }
+.cast-text { margin: 0; }
+
+@media (min-width: 768px) {
+  .cast { padding: 3.5rem 2rem; }
+  .cast-list { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+}
+
+@media (min-width: 992px) {
+  .cast { padding: 4.5rem 8vw; }
+  .cast-heading { font-size: 2.6rem; text-align: left; }
+  .cast-intro { text-align: left; }
+  .cast-list { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+}
+
+.film-card {
+  border: 0;
+  background: #f5f6ef;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.film-art {
+  height: 200px;
+  background-size: cover;
+  background-position: top center;
+}
+.art-rise { background-image: url("images/rise.jpeg"), linear-gradient(135deg, #3f5a3c, #16211b); }
+.art-dawn { background-image: url("images/dawn.jpg"), linear-gradient(135deg, #5b6b4a, #1b2a22); }
+.art-war  { background-image: url("images/war.webp"),  linear-gradient(135deg, #6a6f73, #20262a); }
+.film-meta { color: var(--ash); font-weight: 700; font-size: 0.9rem; }
+
+.accordion-button:not(.collapsed) {
+  background: var(--forest);
+  color: var(--amber);
+}
+.accordion-button:focus { box-shadow: 0 0 0 0.2rem rgba(214, 147, 31, 0.4); }
+
+.site-footer { background: var(--forest); color: #b4baa8; font-size: 0.9rem; }
+
+@media (min-width: 768px) {
+  .hero { padding: 4.5rem 0 5rem; }
+  .hero-title { font-size: 2.6rem; }
+  .section-title { font-size: 2.1rem; }
+}
+@media (min-width: 992px) {
+  .hero-title { font-size: 3.1rem; }
+  .eye { width: 110px; height: 110px; }
+}
+
+.page-head {
+  background: radial-gradient(circle at 70% 40%, #263a2c 0%, var(--forest) 60%);
+  color: var(--fog);
+  padding: 3rem 0 3.5rem;
+  border-bottom: 4px solid var(--amber);
+}
+.page-title {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--fog);
+}
+
+.path {
+  list-style: none;
+  counter-reset: step-counter;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  padding: 0;
+  margin: 0;
+}
+.path-step {
+  position: relative;
+  background: #ffffff;
+  padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+  border-radius: 8px;
+  border-left: 5px solid var(--moss);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.path-step::before {
+  counter-increment: step-counter;
+  content: counter(step-counter);
+  position: absolute;
+  left: 1rem;
+  top: 1.25rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: var(--moss);
+  color: var(--fog);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.path-name {
+  font-size: 1.25rem;
+  color: var(--forest);
+  margin-bottom: 0.35rem;
+}
+
+@media (min-width: 768px) {
+  .path {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.table-section .table {
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.film-table thead {
+  background: var(--forest);
+  color: var(--fog);
+}
+.film-table th, .film-table td {
+  padding: 0.85rem 1rem;
+}
+
+.vote-form {
+  background: var(--forest);
+  color: var(--fog);
+  border-radius: 8px;
+  border-left: 6px solid var(--amber);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+.vote-form .form-label {
+  color: var(--amber);
+  font-weight: 600;
+}
