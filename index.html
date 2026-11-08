@@ -3,30 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Planet of the Apes 2011–2017: the Caesar trilogy</title>
+  <title>Planet of the Apes 2011–2017: The Caesar Trilogy</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Karla:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
-</head> 
+  <link rel="stylesheet" href="css/style.css">
+</head>
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark site-nav sticky-top">
     <div class="container">
-      <a class="navbar-brand brand" href="#home">Apes 2011–2017</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Open menu">
+      <a class="navbar-brand brand" href="index.html">Apes 2011–2017</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Open navigation menu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#story">Story</a></li>
+        <ul class="navbar-nav ms-auto gap-lg-1">
+          <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Trilogy Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#cast">Characters</a></li>
           <li class="nav-item"><a class="nav-link" href="#films">Films</a></li>
           <li class="nav-item"><a class="nav-link" href="#faq">Questions</a></li>
-          <li class="nav-item"><a class="nav-link" href="compare.html">Compare and vote</a></li>
+          <li class="nav-item"><a class="nav-link" href="compare.html">Compare, Quiz &amp; Vote</a></li>
         </ul>
       </div>
     </div>
@@ -34,163 +34,250 @@
 
   <header class="hero" id="home">
     <div class="container">
-      <div class="row align-items-center">
+      <div class="row align-items-center g-4">
         <div class="col-12 col-lg-7">
-          <h1 class="hero-title display-3">One ape. Three films. The end of the human age.</h1>
-          <p class="lead hero-lead">From a lab in San Francisco to a snowy fortress in the mountains: the story of Caesar, the chimpanzee who learned to speak and then had to lead.</p>
-          <a href="#films" class="btn btn-ember btn-lg mt-3">See the three films</a>
+          <h1 class="hero-title">One ape. Three films. The end of the human age.</h1>
+          <p class="lead hero-lead">From a lab in San Francisco to a snowy fortress in the mountains: explore the story of Caesar, search the character archive, and test your knowledge of the trilogy.</p>
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <a href="#films" class="btn btn-ember btn-lg">See the three films</a>
+            <a href="compare.html#quiz" class="btn btn-moss-outline btn-lg">Take the trilogy quiz</a>
+          </div>
         </div>
         <div class="col-12 col-lg-5 order-first order-lg-last text-center">
-          <div class="eyes" aria-hidden="true">
-            <span class="eye"></span>
-            <span class="eye"></span>
+          <div class="eyes-box">
+            <div class="eyes" id="caesar-eyes" role="img" aria-label="Interactive green eyes of Caesar that follow your cursor">
+              <span class="eye"><span class="pupil"></span></span>
+              <span class="eye"><span class="pupil"></span></span>
+            </div>
+            <p class="eye-quote" id="eye-quote">"Apes together strong." — Caesar (Rise, 2011)</p>
+            <button type="button" class="btn btn-moss-outline btn-sm" id="btn-eye-mood">
+              Awaken War Mode (Amber Eyes)
+            </button>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <section class="story py-5" id="story">
-    <div class="container">
-      <div class="row g-4 align-items-center">
-        <div class="col-12 col-md-7">
-          <h2 class="section-title">A reboot that stayed with Caesar</h2>
-          <p>In 2011 20th Century Fox restarted the Planet of the Apes series. Instead of copying the 1968 film, the new trilogy told how the apes rose, step by step, and put one character at the centre: Caesar, played through motion capture by Andy Serkis.</p>
-          <p>The effects were made by Weta Digital. The apes are not men in masks: every look, every sign-language gesture and every pause comes from a real actor's performance.</p>
-          <p class="mb-0">Each film moves the conflict up a level: first an escape, then a fragile peace, then open war.</p>
-        </div>
-        <div class="col-12 col-md-5">
-          <div class="facts p-4">
-            <h3 class="facts-title">The trilogy at a glance</h3>
-            <ul class="list-unstyled mb-0">
-              <li class="d-flex justify-content-between border-bottom py-2"><span>Films</span><strong>3</strong></li>
-              <li class="d-flex justify-content-between border-bottom py-2"><span>First release</span><strong>2011</strong></li>
-              <li class="d-flex justify-content-between border-bottom py-2"><span>Last release</span><strong>2017</strong></li>
-              <li class="d-flex justify-content-between py-2"><span>Lead role</span><strong>Caesar</strong></li>
-            </ul>
+  <main>
+    <section class="story py-5" id="story">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-12 col-md-7">
+            <h2 class="section-title">A reboot that stayed with Caesar</h2>
+            <p>In 2011, 20th Century Fox restarted the Planet of the Apes series. Instead of copying the 1968 film, the new trilogy showed how the apes rose step by step and placed one character at the centre: Caesar, played through motion capture by Andy Serkis.</p>
+            <p>The digital effects were crafted by Weta Digital. The apes are not actors in rubber masks: every look, every sign-language gesture, and every pause comes from a real performance.</p>
+            <p class="mb-0">Each chapter raises the conflict: first a lab escape, then a fragile forest truce, and finally an all-out struggle for survival.</p>
           </div>
-        </div>
-      </div>
-      <blockquote class="pullquote d-none d-md-block mt-5 mb-0">
-        The trilogy is told from the apes' side: humans slowly become the background.
-      </blockquote>
-    </div>
-  </section>
-
-  <section class="cast" id="cast">
-    <h2 class="cast-heading">Six faces of the war</h2>
-    <p class="cast-intro">The characters you need to know to follow the story.</p>
-    <div class="cast-list">
-      <article class="cast-item">
-        <h3 class="cast-name">Caesar</h3>
-        <p class="cast-actor">Andy Serkis</p>
-        <p class="cast-text">Raised by humans, leader of the apes. He wants peace and pays for it every time.</p>
-      </article>
-      <article class="cast-item">
-        <h3 class="cast-name">Koba</h3>
-        <p class="cast-actor">Toby Kebbell</p>
-        <p class="cast-text">A bonobo scarred by lab experiments. He cannot trust any human.</p>
-      </article>
-      <article class="cast-item">
-        <h3 class="cast-name">Maurice</h3>
-        <p class="cast-actor">Karin Konoval</p>
-        <p class="cast-text">A calm orangutan from a circus who speaks in sign language and stays loyal to Caesar.</p>
-      </article>
-      <article class="cast-item">
-        <h3 class="cast-name">Rocket</h3>
-        <p class="cast-actor">Terry Notary</p>
-        <p class="cast-text">A chimpanzee who starts as Caesar's rival and becomes one of his closest allies.</p>
-      </article>
-      <article class="cast-item">
-        <h3 class="cast-name">Bad Ape</h3>
-        <p class="cast-actor">Steve Zahn</p>
-        <p class="cast-text">A zoo chimpanzee who survived alone and brings humour into the darkest film.</p>
-      </article>
-      <article class="cast-item">
-        <h3 class="cast-name">The Colonel</h3>
-        <p class="cast-actor">Woody Harrelson</p>
-        <p class="cast-text">The human commander in War for the Planet of the Apes, Caesar's opposite number.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="films py-5" id="films">
-    <div class="container">
-      <h2 class="section-title">The three films</h2>
-      <div class="row g-4">
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card film-card h-100">
-            <div class="film-art art-rise" role="img" aria-label="Poster area for Rise of the Planet of the Apes"></div>
-            <div class="card-body">
-              <h3 class="card-title h4">Rise of the Planet of the Apes</h3>
-              <p class="film-meta">2011 · Director: Rupert Wyatt</p>
-              <p class="card-text">A scientist tests a drug on chimpanzees. His adopted ape Caesar grows smarter than anyone expected and finally leads an escape.</p>
+          <div class="col-12 col-md-5">
+            <div class="facts p-4">
+              <h3 class="facts-title">The trilogy at a glance</h3>
+              <ul class="list-unstyled mb-0">
+                <li class="d-flex justify-content-between border-bottom py-2"><span>Films</span><strong>3</strong></li>
+                <li class="d-flex justify-content-between border-bottom py-2"><span>First release</span><strong>2011</strong></li>
+                <li class="d-flex justify-content-between border-bottom py-2"><span>Last release</span><strong>2017</strong></li>
+                <li class="d-flex justify-content-between border-bottom py-2"><span>Motion-capture studio</span><strong>Weta Digital</strong></li>
+                <li class="d-flex justify-content-between pt-2"><span>Lead role</span><strong>Caesar</strong></li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card film-card h-100">
-            <div class="film-art art-dawn" role="img" aria-label="Poster area for Dawn of the Planet of the Apes"></div>
-            <div class="card-body">
-              <h3 class="card-title h4">Dawn of the Planet of the Apes</h3>
-              <p class="film-meta">2014 · Director: Matt Reeves</p>
-              <p class="card-text">Ten years later a virus has wiped out most people. Apes and the last humans try to share the forest, but fear on both sides breaks the peace.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card film-card h-100">
-            <div class="film-art art-war" role="img" aria-label="Poster area for War for the Planet of the Apes"></div>
-            <div class="card-body">
-              <h3 class="card-title h4">War for the Planet of the Apes</h3>
-              <p class="film-meta">2017 · Director: Matt Reeves</p>
-              <p class="card-text">Caesar hunts the Colonel who destroyed his family, and the trilogy ends with a question about what a leader owes to his people.</p>
-            </div>
-          </div>
-        </div>
+        <blockquote class="pullquote mt-4 mb-0">
+          The trilogy is told from the apes' side: humans slowly become the background.
+        </blockquote>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="faq py-5" id="faq">
-    <div class="container">
-      <h2 class="section-title">Questions new viewers ask</h2>
-      <div class="accordion" id="faqList">
-        <div class="accordion-item">
-          <h3 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1" aria-expanded="true" aria-controls="q1">In what order should I watch the films?</button>
-          </h3>
-          <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqList">
-            <div class="accordion-body">By release date: Rise (2011), Dawn (2014), War (2017). Each film continues directly from the previous one.</div>
+    <section class="cast" id="cast">
+      <div class="container">
+        <h2 class="section-title text-light mb-2">Faces of the conflict</h2>
+        <p class="cast-intro">Search and filter the key apes and humans across the 2011–2017 trilogy.</p>
+
+        <div class="archive-controls">
+          <div class="row g-3 align-items-end">
+            <div class="col-12 col-lg-4">
+              <label class="form-label" for="char-search">Search name, actor or story</label>
+              <input type="text" id="char-search" class="form-control" placeholder="e.g. Caesar, Andy Serkis, dam...">
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+              <label class="form-label" for="char-side">Side</label>
+              <select id="char-side" class="form-select">
+                <option value="all">All sides</option>
+                <option value="Apes">Apes</option>
+                <option value="Humans">Humans</option>
+              </select>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+              <label class="form-label" for="char-film">First appearance</label>
+              <select id="char-film" class="form-select">
+                <option value="all">Any film</option>
+                <option value="Rise">Rise (2011)</option>
+                <option value="Dawn">Dawn (2014)</option>
+                <option value="War">War (2017)</option>
+              </select>
+            </div>
+            <div class="col-7 col-md-4 col-lg-2">
+              <label class="form-label" for="char-sort">Sort by</label>
+              <select id="char-sort" class="form-select">
+                <option value="default">Story order</option>
+                <option value="az">Name (A–Z)</option>
+                <option value="films">Most films (3 → 1)</option>
+              </select>
+            </div>
+            <div class="col-5 col-md-12 col-lg-2 d-grid">
+              <button type="button" id="char-reset" class="btn btn-ember">Reset</button>
+            </div>
           </div>
         </div>
-        <div class="accordion-item">
-          <h3 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2" aria-expanded="false" aria-controls="q2">Do I need to see the 1968 original first?</button>
-          </h3>
-          <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqList">
-            <div class="accordion-body">No. The 2011 film is a reboot with its own story, so you can start with it without any earlier knowledge.</div>
-          </div>
+
+        <div class="archive-stats">
+          <strong id="char-stats">Showing 9 of 9 characters</strong>
         </div>
-        <div class="accordion-item">
-          <h3 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3" aria-expanded="false" aria-controls="q3">Are the apes real animals or computer graphics?</button>
-          </h3>
-          <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqList">
-            <div class="accordion-body">Neither exactly. Actors played the apes in motion-capture suits, and Weta Digital turned their performances into digital apes.</div>
+
+        <div id="char-empty" class="empty-box hidden">
+          <h3 class="h5 mb-2">Nothing found in Caesar's archive</h3>
+          <p class="mb-3">No character matches your search or selected filters.</p>
+          <button type="button" id="empty-reset" class="btn btn-ember btn-sm">Show all characters</button>
+        </div>
+
+        <div class="cast-list" id="cast-list"></div>
+      </div>
+    </section>
+
+    <section class="films py-5" id="films">
+      <div class="container">
+        <h2 class="section-title">The three films</h2>
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card film-card h-100">
+              <img src="images/rise.jpeg" class="film-img" alt="Caesar staring forward in Rise of the Planet of the Apes (2011)">
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title h4">Rise of the Planet of the Apes</h3>
+                <p class="film-meta">2011 · Director: Rupert Wyatt</p>
+                <p class="card-text flex-grow-1">A scientist tests an Alzheimer's cure on chimpanzees. His adopted ape Caesar grows smarter than anyone expected and leads a revolt across the Golden Gate Bridge.</p>
+                <button type="button" class="btn btn-bark-outline btn-sm mt-2 toggle-film-btn" aria-expanded="false">
+                  Show production notes ▾
+                </button>
+                <div class="film-extra">
+                  <strong>Runtime:</strong> 105 min · <strong>Worldwide Box Office:</strong> $481.8M<br>
+                  <strong>Key milestone:</strong> First film to record outdoor motion-capture scenes in sunlight on the Golden Gate Bridge set.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card film-card h-100">
+              <img src="images/dawn.jpg" class="film-img" alt="Caesar leading the ape colony in Dawn of the Planet of the Apes (2014)">
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title h4">Dawn of the Planet of the Apes</h3>
+                <p class="film-meta">2014 · Director: Matt Reeves</p>
+                <p class="card-text flex-grow-1">Ten years later, the Simian Flu has wiped out most people. Apes and surviving humans try to share the forest, until Koba's betrayal destroys the truce.</p>
+                <button type="button" class="btn btn-bark-outline btn-sm mt-2 toggle-film-btn" aria-expanded="false">
+                  Show production notes ▾
+                </button>
+                <div class="film-extra">
+                  <strong>Runtime:</strong> 130 min · <strong>Worldwide Box Office:</strong> $710.6M<br>
+                  <strong>Key milestone:</strong> Filmed in real rainy forests around Vancouver and New Orleans with 85% digital ape cast scenes.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card film-card h-100">
+              <img src="images/war.webp" class="film-img" alt="Caesar in winter snow in War for the Planet of the Apes (2017)">
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title h4">War for the Planet of the Apes</h3>
+                <p class="film-meta">2017 · Director: Matt Reeves</p>
+                <p class="card-text flex-grow-1">Caesar hunts the ruthless Colonel who attacked his family, leading to a snowy final journey where Caesar must choose rescue over revenge.</p>
+                <button type="button" class="btn btn-bark-outline btn-sm mt-2 toggle-film-btn" aria-expanded="false">
+                  Show production notes ▾
+                </button>
+                <div class="film-extra">
+                  <strong>Runtime:</strong> 140 min · <strong>Worldwide Box Office:</strong> $490.7M<br>
+                  <strong>Key milestone:</strong> Weta Digital simulated millions of snow-covered hairs interacting with wind and torchlight.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="faq py-5" id="faq">
+      <div class="container">
+        <h2 class="section-title">Questions new viewers ask</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3 class="faq-header">
+              <button class="faq-question open" type="button" aria-expanded="true">
+                <span>In what order should I watch the films?</span>
+                <span class="faq-icon">−</span>
+              </button>
+            </h3>
+            <div class="faq-answer">
+              Watch by release date: <strong>Rise (2011)</strong>, <strong>Dawn (2014)</strong>, and <strong>War (2017)</strong>. Each film continues Caesar's life directly from the previous chapter.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-header">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Do I need to see the 1968 original first?</span>
+                <span class="faq-icon">+</span>
+              </button>
+            </h3>
+            <div class="faq-answer">
+              No. The 2011 trilogy is a standalone origin story with its own timeline, though sharp viewers will notice subtle nods such as the spaceship <em>Icarus</em> and young Nova.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-header">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Are the apes real animals or computer graphics?</span>
+                <span class="faq-icon">+</span>
+              </button>
+            </h3>
+            <div class="faq-answer">
+              No live apes were used on set. Actors wore grey motion-capture suits and head-mounted facial cameras, and Weta Digital translated their performances into digital apes.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-header">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>How does Kingdom of the Planet of the Apes (2024) connect to this trilogy?</span>
+                <span class="faq-icon">+</span>
+              </button>
+            </h3>
+            <div class="faq-answer">
+              <em>Kingdom</em> takes place roughly 300 years after <em>War (2017)</em>, showing how future generations remember and reinterpret Caesar's teachings.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="site-footer py-4">
-    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
-      <span>Fan project for the Web Technologies 1 course.</span>
-      <span>Films, titles and characters belong to their respective owners.</span>
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-2">
+        <span><strong>Apes 2011–2017</strong> · Endterm Project for Web Technologies 1 (Front End).</span>
+        <span>Created by Saken Ashimov · <a href="compare.html">Go to Quiz &amp; Voting →</a></span>
+      </div>
+      <p class="footer-credits mb-0">
+        Credits: Planet of the Apes films, characters, and poster images belong to 20th Century Studios &amp; Weta Digital. Built using Bootstrap 5.3, jQuery 3.7, and Google Fonts (Alfa Slab One, Karla). Code refinement assisted by AI (Google Gemini) and reviewed by the author.
+      </p>
     </div>
   </footer>
 
+  <button type="button" id="back-to-top" class="back-to-top" aria-label="Scroll back to top">↑ Top</button>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/characters.js"></script>
+  <script src="js/effects.js"></script>
 </body>
 </html>
