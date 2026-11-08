@@ -3,30 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Compare the films and vote | Apes 2011–2017</title>
+  <title>Compare, Quiz &amp; Vote | Apes 2011–2017</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Karla:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark site-nav sticky-top">
     <div class="container">
       <a class="navbar-brand brand" href="index.html">Apes 2011–2017</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Open menu">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Open navigation menu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"  ><a class="nav-link" href="index.html#story">Story</a></li>
+        <ul class="navbar-nav ms-auto gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Trilogy Home</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#cast">Characters</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#films">Films</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#faq">Questions</a></li>
-          <li class="nav-item"><a class="nav-link active" href="compare.html" aria-current="page">Compare and vote</a></li>
+          <li class="nav-item"><a class="nav-link active" href="compare.html" aria-current="page">Compare, Quiz &amp; Vote</a></li>
         </ul>
       </div>
     </div>
@@ -34,27 +34,41 @@
 
   <header class="page-head">
     <div class="container">
-      <h1 class="page-title">Three films side by side</h1>
-      <p class="lead mb-0">Every film raises the stakes. Compare them, then tell us which one you would rewatch first.</p>
+      <h1 class="page-title">Compare, test your knowledge &amp; vote</h1>
+      <p class="lead mb-3">Spotlight any chapter side by side, challenge the 5-question trilogy quiz, and add your rating to the community poll.</p>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#escalation" class="btn btn-ember">Compare films</a>
+        <a href="#quiz" class="btn btn-moss-outline">Start trilogy quiz</a>
+        <a href="#vote" class="btn btn-moss-outline">Cast your vote</a>
+      </div>
     </div>
   </header>
 
   <main>
     <section class="py-5" id="escalation">
       <div class="container">
-        <h2 class="section-title">How the story escalates</h2>
+        <h2 class="section-title">How the conflict escalates</h2>
+        <p class="mb-3">Select a film below to spotlight its stage and table row:</p>
+
+        <div class="spotlight-bar" role="group" aria-label="Spotlight a film across the page">
+          <button type="button" class="btn btn-bark-outline active spotlight-btn" data-film="all">All three films</button>
+          <button type="button" class="btn btn-bark-outline spotlight-btn" data-film="Rise">Rise (2011)</button>
+          <button type="button" class="btn btn-bark-outline spotlight-btn" data-film="Dawn">Dawn (2014)</button>
+          <button type="button" class="btn btn-bark-outline spotlight-btn" data-film="War">War (2017)</button>
+        </div>
+
         <ol class="path">
-          <li class="path-step">
-            <h3 class="path-name">Escape</h3>
-            <p>Caesar breaks out of the ape shelter and leads the other apes into the redwood forest.</p>
+          <li class="path-step" data-film="Rise">
+            <h3 class="path-name">Escape (2011)</h3>
+            <p class="mb-0">Caesar unites the shelter apes, crosses the Golden Gate Bridge, and claims a home in Muir Woods.</p>
           </li>
-          <li class="path-step">
-            <h3 class="path-name">Uneasy peace</h3>
-            <p>Ten years on, apes and the last humans meet again. Distrust grows on both sides.</p>
+          <li class="path-step" data-film="Dawn">
+            <h3 class="path-name">Fragile Truce (2014)</h3>
+            <p class="mb-0">Ten years after the virus, apes and surviving humans attempt peace until fear and Koba's coup ignite war.</p>
           </li>
-          <li class="path-step">
-            <h3 class="path-name">War</h3>
-            <p>A human army hunts the apes, and Caesar has to decide what he is fighting for.</p>
+          <li class="path-step" data-film="War">
+            <h3 class="path-name">Survival (2017)</h3>
+            <p class="mb-0">Hunted by the Colonel's northern regiment, Caesar frees his captured tribe and leads them to a new oasis.</p>
           </li>
         </ol>
       </div>
@@ -62,40 +76,48 @@
 
     <section class="py-5 table-section" id="facts">
       <div class="container">
-        <h2 class="section-title">Facts at a glance</h2>
+        <h2 class="section-title">Side-by-side comparison</h2>
         <div class="table-responsive">
-          <table class="table table-striped align-middle film-table">
-            <caption>Reboot trilogy, 2011–2017 (US release dates)</caption>
+          <table class="table table-striped align-middle film-table mb-0">
+            <caption>Caesar reboot trilogy comparison (2011–2017)</caption>
             <thead>
               <tr>
                 <th scope="col">Film</th>
                 <th scope="col">US release</th>
                 <th scope="col">Director</th>
+                <th scope="col">Runtime</th>
                 <th scope="col">Main antagonist</th>
                 <th scope="col">Caesar's goal</th>
+                <th scope="col">Box office</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-film="Rise">
                 <th scope="row">Rise of the Planet of the Apes</th>
                 <td>5 August 2011</td>
                 <td>Rupert Wyatt</td>
-                <td>Dodge Landon</td>
-                <td>Get free</td>
+                <td>105 min</td>
+                <td>Dodge Landon / Gen-Sys</td>
+                <td>Win freedom</td>
+                <td>$481.8M</td>
               </tr>
-              <tr>
+              <tr data-film="Dawn">
                 <th scope="row">Dawn of the Planet of the Apes</th>
                 <td>11 July 2014</td>
                 <td>Matt Reeves</td>
-                <td>Koba</td>
-                <td>Keep the peace</td>
+                <td>130 min</td>
+                <td>Koba &amp; Dreyfus</td>
+                <td>Protect the truce</td>
+                <td>$710.6M</td>
               </tr>
-              <tr>
+              <tr data-film="War">
                 <th scope="row">War for the Planet of the Apes</th>
                 <td>14 July 2017</td>
                 <td>Matt Reeves</td>
+                <td>140 min</td>
                 <td>The Colonel</td>
-                <td>Protect his people</td>
+                <td>Save his colony</td>
+                <td>$490.7M</td>
               </tr>
             </tbody>
           </table>
@@ -103,58 +125,178 @@
       </div>
     </section>
 
+    <section class="py-5 quiz-section" id="quiz">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-9">
+            <h2 class="section-title text-light mb-2">Trilogy Knowledge Quiz</h2>
+            <p class="cast-intro">Test how well you remember Caesar's journey. Click an option or press keys <strong>1–4</strong> on your keyboard.</p>
+
+            <div class="quiz-card">
+              <div id="quiz-play">
+                <div class="quiz-meta">
+                  <span id="quiz-progress">Question 1 of 5</span>
+                  <span id="quiz-score-live">Score: 0</span>
+                </div>
+
+                <h3 id="quiz-question" class="quiz-question">Loading question...</h3>
+                <div id="quiz-options" class="quiz-options"></div>
+
+                <div id="quiz-feedback" class="quiz-feedback hidden"></div>
+
+                <div class="mt-3">
+                  <button type="button" id="quiz-next" class="btn btn-ember hidden">Next question →</button>
+                </div>
+              </div>
+
+              <div id="quiz-result" class="hidden text-center py-3">
+                <h3 id="quiz-final-score" class="h4 text-warning mb-2">You scored 0 out of 5</h3>
+                <p id="quiz-final-rank" class="lead text-light mb-4"></p>
+                <button type="button" id="quiz-restart" class="btn btn-ember btn-lg">Take the quiz again</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="py-5" id="vote">
       <div class="container">
-        <div class="row">
-          <div class="col-12 col-lg-8">
-            <h2 class="section-title">Which film is your favourite?</h2>
-            <form class="vote-form p-4" action="#" method="get">
+        <h2 class="section-title">Vote for your favourite film</h2>
+        <div class="row g-4 align-items-start">
+          <div class="col-12 col-lg-7">
+            <div id="vote-success" class="success-banner" role="status"></div>
+
+            <form id="vote-form" class="vote-form p-4" novalidate>
               <div class="row g-3">
                 <div class="col-12 col-md-6">
-                  <label class="form-label" for="name">Your name</label>
-                  <input class="form-control" type="text" id="name" name="name" required>
+                  <label class="form-label" for="voter-name">Your name *</label>
+                  <input class="form-control" type="text" id="voter-name" name="name" placeholder="e.g. Saken" required>
+                  <p class="error-text" id="err-name"></p>
                 </div>
+
                 <div class="col-12 col-md-6">
-                  <label class="form-label" for="email">Email</label>
-                  <input class="form-control" type="email" id="email" name="email" required>
+                  <label class="form-label" for="voter-email">Email *</label>
+                  <input class="form-control" type="email" id="voter-email" name="email" placeholder="you@example.com" required>
+                  <p class="error-text" id="err-email"></p>
                 </div>
+
                 <div class="col-12 col-md-6">
-                  <label class="form-label" for="film">Favourite film</label>
-                  <select class="form-select" id="film" name="film" required>
-                    <option value="" selected disabled>Choose one</option>
-                    <option>Rise of the Planet of the Apes</option>
-                    <option>Dawn of the Planet of the Apes</option>
-                    <option>War for the Planet of the Apes</option>
+                  <label class="form-label" for="voter-film">Favourite film *</label>
+                  <select class="form-select" id="voter-film" name="film" required>
+                    <option value="" selected>Choose one</option>
+                    <option value="Rise">Rise of the Planet of the Apes (2011)</option>
+                    <option value="Dawn">Dawn of the Planet of the Apes (2014)</option>
+                    <option value="War">War for the Planet of the Apes (2017)</option>
                   </select>
+                  <p class="error-text" id="err-film"></p>
                 </div>
+
                 <div class="col-12 col-md-6">
-                  <span class="form-label d-block">Your rating</span>
-                  <div class="d-flex flex-wrap gap-3">
-                    <div class="form-check"><input class="form-check-input" type="radio" name="rating" id="r1" value="1" required><label class="form-check-label" for="r1">1</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="rating" id="r2" value="2"><label class="form-check-label" for="r2">2</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="rating" id="r3" value="3"><label class="form-check-label" for="r3">3</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="rating" id="r4" value="4"><label class="form-check-label" for="r4">4</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="rating" id="r5" value="5"><label class="form-check-label" for="r5">5</label></div>
-                  </div>
+                  <label class="form-label" for="voter-date">Date you watched it *</label>
+                  <input class="form-control" type="date" id="voter-date" name="watchDate" required>
+                  <p class="error-text" id="err-date"></p>
                 </div>
+
                 <div class="col-12">
-                  <label class="form-label" for="comment">Why this film?</label>
-                  <textarea class="form-control" id="comment" name="comment" rows="4"></textarea>
+                  <span class="form-label d-block">Your rating (1 to 5) *</span>
+                  <div class="d-flex flex-wrap gap-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="rating" id="r1" value="1">
+                      <label class="form-check-label" for="r1">1 ★</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="rating" id="r2" value="2">
+                      <label class="form-check-label" for="r2">2 ★</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="rating" id="r3" value="3">
+                      <label class="form-check-label" for="r3">3 ★</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="rating" id="r4" value="4">
+                      <label class="form-check-label" for="r4">4 ★</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="rating" id="r5" value="5">
+                      <label class="form-check-label" for="r5">5 ★</label>
+                    </div>
+                  </div>
+                  <p class="error-text" id="err-rating"></p>
                 </div>
+
+                <div class="col-12">
+                  <div class="d-flex flex-wrap justify-content-between align-items-baseline gap-1">
+                    <label class="form-label mb-1" for="voter-comment">Why did you choose this film? *</label>
+                    <span id="comment-count" class="char-hint">0 / 15 min characters</span>
+                  </div>
+                  <textarea class="form-control" id="voter-comment" name="comment" rows="3" placeholder="Share your favourite scene, character, or theme..."></textarea>
+                  <p class="error-text" id="err-comment"></p>
+                </div>
+
                 <div class="col-12">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="seen" name="seen" required>
-                    <label class="form-check-label" for="seen">I have watched all three films</label>
+                    <input class="form-check-input" type="checkbox" id="voter-seen" name="seen">
+                    <label class="form-check-label" for="voter-seen">I have watched all three films in the trilogy *</label>
                   </div>
+                  <p class="error-text" id="err-seen"></p>
                 </div>
+
                 <div class="col-12">
                   <button class="btn btn-ember btn-lg" type="submit">Send my vote</button>
                 </div>
               </div>
             </form>
           </div>
-          <div class="col-lg-4 d-none d-lg-block">
-            <p class="pullquote">The three films came out over six years, from 2011 to 2017.</p>
+
+          <div class="col-12 col-lg-5">
+            <aside class="poll-panel">
+              <h3 class="h4 mb-3">Live Community Poll</h3>
+
+              <div class="poll-summary">
+                <div>
+                  <span class="d-block small text-secondary">Total votes</span>
+                  <strong id="poll-total" class="fs-5">5</strong>
+                </div>
+                <div class="text-end">
+                  <span class="d-block small text-secondary">Average rating</span>
+                  <strong id="poll-avg" class="fs-5">4.6 / 5 ★</strong>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex flex-wrap justify-content-between gap-1 small fw-bold">
+                  <span>Rise of the Planet of the Apes (2011)</span>
+                  <span id="pct-rise">1 vote (20%)</span>
+                </div>
+                <div class="poll-bar-track">
+                  <div id="bar-rise" class="poll-bar-fill" style="width: 20%;"></div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex flex-wrap justify-content-between gap-1 small fw-bold">
+                  <span>Dawn of the Planet of the Apes (2014)</span>
+                  <span id="pct-dawn">2 votes (40%)</span>
+                </div>
+                <div class="poll-bar-track">
+                  <div id="bar-dawn" class="poll-bar-fill" style="width: 40%;"></div>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <div class="d-flex flex-wrap justify-content-between gap-1 small fw-bold">
+                  <span>War for the Planet of the Apes (2017)</span>
+                  <span id="pct-war">2 votes (40%)</span>
+                </div>
+                <div class="poll-bar-track">
+                  <div id="bar-war" class="poll-bar-fill" style="width: 40%;"></div>
+                </div>
+              </div>
+
+              <p class="fw-bold small text-uppercase text-secondary mb-2">Recent votes</p>
+              <ul id="poll-recent" class="poll-recent"></ul>
+            </aside>
           </div>
         </div>
       </div>
@@ -162,12 +304,23 @@
   </main>
 
   <footer class="site-footer py-4">
-    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
-      <span>Fan project for the Web Technologies 1 course.</span>
-      <span>Films, titles and characters belong to their respective owners.</span>
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-2">
+        <span><strong>Apes 2011–2017</strong> · Endterm Project for Web Technologies 1 (Front End).</span>
+        <span>Created by Saken Ashimov · <a href="index.html">← Back to Trilogy Home</a></span>
+      </div>
+      <p class="footer-credits mb-0">
+        Credits: Planet of the Apes films, characters, and poster images belong to 20th Century Studios &amp; Weta Digital. Built using Bootstrap 5.3, jQuery 3.7, and Google Fonts (Alfa Slab One, Karla). Code refinement assisted by AI (Google Gemini) and reviewed by the author.
+      </p>
     </div>
   </footer>
 
+  <button type="button" id="back-to-top" class="back-to-top" aria-label="Scroll back to top">↑ Top</button>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/vote.js"></script>
+  <script src="js/effects.js"></script>
 </body>
 </html>
