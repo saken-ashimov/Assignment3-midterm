@@ -65,7 +65,7 @@ $(function () {
   // 2. Film card expandable details using slideToggle()
   $(".toggle-film-btn").on("click", function () {
     const $btn = $(this);
-    const $extra = $btn.siblings(".film-extra");
+    const $extra = $btn.closest(".card-body").find(".film-extra");
     const isVisible = $extra.is(":visible");
 
     $extra.stop(true, true).slideToggle(240);
@@ -132,11 +132,42 @@ $(function () {
     $(this).stop(true, false).animate({ top: "0px" }, 160);
   });
 
+  const $sectionLinks = $('.site-nav .nav-link[href^="#"]');
+  const spySectionIds = ["#home", "#cast", "#films", "#faq"];
+
+  function updateScrollSpy() {
+    if ($sectionLinks.length === 0 || $("#cast").length === 0) {
+      return;
+    }
+
+    const scrollPos = $(window).scrollTop() + 140;
+    const atBottom = $(window).scrollTop() + $(window).height() >= $(document).height() - 40;
+    let activeId = "#home";
+
+    if (atBottom) {
+      activeId = "#faq";
+    } else {
+      for (let i = 0; i < spySectionIds.length; i++) {
+        const $sec = $(spySectionIds[i]);
+        if ($sec.length > 0 && scrollPos >= $sec.offset().top) {
+          activeId = spySectionIds[i];
+        }
+      }
+    }
+
+    $sectionLinks.removeClass("active").removeAttr("aria-current");
+    $sectionLinks.filter('[href="' + activeId + '"]').addClass("active").attr("aria-current", "location");
+  }
+
   $('a[href^="#"]').on("click", function (event) {
     const targetId = $(this).attr("href");
     const $target = $(targetId);
     if ($target.length > 0) {
       event.preventDefault();
+      if ($(this).hasClass("nav-link") && $sectionLinks.length > 0 && $("#cast").length > 0) {
+        $sectionLinks.removeClass("active").removeAttr("aria-current");
+        $(this).addClass("active").attr("aria-current", "location");
+      }
       $("html, body")
         .stop(true, false)
         .animate({ scrollTop: $target.offset().top - 72 }, 420);
@@ -146,6 +177,8 @@ $(function () {
   const $topBtn = $("#back-to-top");
 
   $(window).on("scroll", function () {
+    updateScrollSpy();
+
     if ($(this).scrollTop() > 300) {
       if (!$topBtn.is(":visible")) {
         $topBtn.stop(true, true).fadeIn(200);
@@ -156,6 +189,8 @@ $(function () {
       }
     }
   });
+
+  updateScrollSpy();
 
   $topBtn.on("click", function () {
     $("html, body").stop(true, false).animate({ scrollTop: 0 }, 420);
