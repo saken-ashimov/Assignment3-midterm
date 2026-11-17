@@ -16,17 +16,20 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark site-nav sticky-top">
     <div class="container">
-      <a class="navbar-brand brand" href="index.html">Apes 2011–2017</a>
+      <a class="navbar-brand brand" href="#home">Apes 2011–2017</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Open navigation menu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav ms-auto gap-lg-1">
-          <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Trilogy Home</a></li>
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+          <li class="nav-item"><a class="nav-link active" href="#home" aria-current="page">Trilogy Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#cast">Characters</a></li>
           <li class="nav-item"><a class="nav-link" href="#films">Films</a></li>
           <li class="nav-item"><a class="nav-link" href="#faq">Questions</a></li>
           <li class="nav-item"><a class="nav-link" href="compare.html">Compare, Quiz &amp; Vote</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <button type="button" id="theme-toggle" class="btn btn-sm theme-toggle-btn" aria-pressed="false">🌙 Dark</button>
+          </li>
         </ul>
       </div>
     </div>
@@ -264,7 +267,7 @@
   <footer class="site-footer py-4">
     <div class="container">
       <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-2">
-        <span><strong>Apes 2011–2017</strong> · Endterm Project for Web Technologies 1 (Front End).</span>
+        <span><strong>Apes 2011–2017</strong> · Final Project for Web Technologies 1 (Front End).</span>
         <span>Created by Saken Ashimov · <a href="compare.html">Go to Quiz &amp; Voting →</a></span>
       </div>
       <p class="footer-credits mb-0">
@@ -272,6 +275,7 @@
         <a href="https://www.20thcenturystudios.com/movies/rise-of-the-planet-of-the-apes" target="_blank" rel="noopener">Rise (20th Century Studios)</a>,
         <a href="https://go3.ee/ru/tvod/planeta-obezyan-revolyuciya,vod-5010408" target="_blank" rel="noopener">Dawn (Go3)</a>, and
         <a href="https://www.disneyplus.com/en-ms/browse/entity-5a4ea809-3032-453f-a1b7-78b38ebaa8d4" target="_blank" rel="noopener">War (Disney+)</a>.
+        Star &amp; heart rating widget inspired by <a href="https://letterboxd.com/" target="_blank" rel="noopener">Letterboxd</a>.
         Built with <a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap 5.3</a>,
         <a href="https://jquery.com/" target="_blank" rel="noopener">jQuery 3.7</a>, and
         <a href="https://fonts.google.com/" target="_blank" rel="noopener">Google Fonts</a> (Alfa Slab One, Karla).
@@ -284,6 +288,7 @@
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/theme.js"></script>
   <script src="js/characters.js"></script>
   <script src="js/effects.js"></script>
 </body>
