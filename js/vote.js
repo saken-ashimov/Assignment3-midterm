@@ -1,4 +1,6 @@
-// Form validation and live community poll for compare.html
+// Form validation, Letterboxd star+heart rating, and persistent live poll for compare.html
+const VOTES_STORAGE_KEY = "apes_votes";
+
 const voteForm = document.querySelector("#vote-form");
 voteForm.noValidate = true;
 
@@ -6,18 +8,55 @@ const nameInput = document.querySelector("#voter-name");
 const emailInput = document.querySelector("#voter-email");
 const filmInput = document.querySelector("#voter-film");
 const dateInput = document.querySelector("#voter-date");
+const ratingInput = document.querySelector("#voter-rating");
+const starGroup = document.querySelector("#star-group");
+const starButtons = document.querySelectorAll(".star-btn");
+const likeButton = document.querySelector("#voter-like");
+const ratingReadout = document.querySelector("#rating-readout");
 const commentInput = document.querySelector("#voter-comment");
 const seenCheckbox = document.querySelector("#voter-seen");
 const commentCountEl = document.querySelector("#comment-count");
+const resetVotesBtn = document.querySelector("#reset-votes");
 
-// Initial community votes so the poll looks realistic on page load
-const pollVotes = [
-  { name: "Arman", film: "Dawn", rating: 5 },
-  { name: "Diana", film: "War", rating: 5 },
-  { name: "Timur", film: "Rise", rating: 4 },
-  { name: "Alina", film: "Dawn", rating: 5 },
-  { name: "Max", film: "War", rating: 4 }
+let selectedRating = 0;
+let isLiked = false;
+
+const defaultVotes = [
+  { name: "Arman", film: "Dawn", rating: 5, liked: true },
+  { name: "Diana", film: "War", rating: 5, liked: true },
+  { name: "Timur", film: "Rise", rating: 4, liked: false },
+  { name: "Alina", film: "Dawn", rating: 5, liked: true },
+  { name: "Max", film: "War", rating: 4, liked: false }
 ];
+
+function loadVotes() {
+  try {
+    if (typeof localStorage !== "undefined") {
+      const raw = localStorage.getItem(VOTES_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    }
+  } catch (e) {
+    // Fall back to default votes
+  }
+  return defaultVotes.slice();
+}
+
+function saveVotes(votes) {
+  try {
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem(VOTES_STORAGE_KEY, JSON.stringify(votes));
+    }
+  } catch (e) {
+    // Ignore storage quota errors
+  }
+}
+
+let pollVotes = loadVotes();
 
 const releaseDates = {
   Rise: "2011-08-05",
@@ -62,8 +101,60 @@ function isValidEmail(email) {
 }
 
 function getSelectedRating() {
-  const checked = document.querySelector('input[name="rating"]:checked');
-  return checked ? Number(checked.value) : 0;
+  return selectedRating;
+}
+
+function updateRatingReadout(previewStars) {
+  if (!ratingReadout) {
+    return;
+  }
+  const activeCount = previewStars > 0 ? previewStars : selectedRating;
+  if (activeCount === 0 && !isLiked) {
+    ratingReadout.textContent = "No rating selected";
+    return;
+  }
+  const starText = activeCount > 0 ? activeCount + " / 5 ★" : "0 / 5 ★";
+  ratingReadout.textContent = isLiked ? starText + " · ♥ Liked" : starText;
+}
+
+function paintStars(activeCount, hoverCount) {
+  for (const btn of starButtons) {
+    const val = Number(btn.dataset.value);
+    btn.classList.toggle("active", val <= activeCount);
+    btn.classList.toggle("hover-preview", hoverCount > 0 && val <= hoverCount);
+    btn.setAttribute("aria-pressed", String(val === activeCount));
+  }
+  updateRatingReadout(hoverCount);
+}
+
+for (const btn of starButtons) {
+  btn.addEventListener("mouseenter", function () {
+    paintStars(selectedRating, Number(btn.dataset.value));
+  });
+
+  btn.addEventListener("click", function () {
+    selectedRating = Number(btn.dataset.value);
+    if (ratingInput) {
+      ratingInput.value = String(selectedRating);
+    }
+    paintStars(selectedRating, 0);
+    validateRating();
+  });
+}
+
+if (starGroup) {
+  starGroup.addEventListener("mouseleave", function () {
+    paintStars(selectedRating, 0);
+  });
+}
+
+if (likeButton) {
+  likeButton.addEventListener("click", function () {
+    isLiked = !isLiked;
+    likeButton.classList.toggle("liked", isLiked);
+    likeButton.setAttribute("aria-pressed", String(isLiked));
+    updateRatingReadout(0);
+  });
 }
 
 function setFieldState(inputEl, errorId, message) {
@@ -137,7 +228,7 @@ function validateDate() {
 function validateRating() {
   let msg = "";
   if (getSelectedRating() === 0) {
-    msg = "Please select a rating from 1 to 5.";
+    msg = "Please select a star rating from 1 to 5.";
   }
   return setFieldState(null, "err-rating", msg);
 }
@@ -198,11 +289,6 @@ dateInput.addEventListener("change", function () {
   validateDate();
 });
 
-const ratingRadios = document.querySelectorAll('input[name="rating"]');
-for (const radio of ratingRadios) {
-  radio.addEventListener("change", validateRating);
-}
-
 commentInput.addEventListener("blur", function () {
   commentInput.dataset.touched = "yes";
   validateComment();
@@ -229,10 +315,10 @@ function renderPoll() {
     if (vote.film === "War") warVotes = warVotes + 1;
   }
 
-  const avgRating = (sumRatings / total).toFixed(1);
-  const risePct = Math.round((riseVotes / total) * 100);
-  const dawnPct = Math.round((dawnVotes / total) * 100);
-  const warPct = Math.round((warVotes / total) * 100);
+  const avgRating = total > 0 ? (sumRatings / total).toFixed(1) : "0.0";
+  const risePct = total > 0 ? Math.round((riseVotes / total) * 100) : 0;
+  const dawnPct = total > 0 ? Math.round((dawnVotes / total) * 100) : 0;
+  const warPct = total > 0 ? Math.round((warVotes / total) * 100) : 0;
 
   document.querySelector("#poll-total").textContent = total;
   document.querySelector("#poll-avg").textContent = avgRating + " / 5 ★";
@@ -249,12 +335,27 @@ function renderPoll() {
   const recentList = document.querySelector("#poll-recent");
   recentList.textContent = "";
 
-  // Show the 4 most recent votes
+  // Show the 4 most recent votes with Letterboxd green stars and orange heart
   const startIdx = Math.max(0, pollVotes.length - 4);
   for (let i = pollVotes.length - 1; i >= startIdx; i--) {
     const v = pollVotes[i];
     const li = document.createElement("li");
-    li.textContent = v.name + " voted for " + v.film + " (" + v.rating + "/5 ★)";
+
+    const nameText = document.createTextNode(v.name + " watched " + v.film + " ");
+    const starsSpan = document.createElement("span");
+    starsSpan.classList.add("lb-stars");
+    starsSpan.textContent = "★".repeat(v.rating);
+
+    li.appendChild(nameText);
+    li.appendChild(starsSpan);
+
+    if (v.liked) {
+      const heartSpan = document.createElement("span");
+      heartSpan.classList.add("lb-heart");
+      heartSpan.textContent = " ♥";
+      li.appendChild(heartSpan);
+    }
+
     recentList.appendChild(li);
   }
 }
@@ -283,17 +384,31 @@ voteForm.addEventListener("submit", function (event) {
   const submittedName = nameInput.value.trim();
   const submittedFilm = filmInput.value;
   const submittedRating = getSelectedRating();
+  const submittedLike = isLiked;
 
   pollVotes.push({
     name: submittedName,
     film: submittedFilm,
-    rating: submittedRating
+    rating: submittedRating,
+    liked: submittedLike
   });
 
+  saveVotes(pollVotes);
   renderPoll();
 
-  // Clear the form and validation states
+  // Clear the form, Letterboxd stars/heart, and validation states
   voteForm.reset();
+  selectedRating = 0;
+  isLiked = false;
+  if (ratingInput) {
+    ratingInput.value = "0";
+  }
+  if (likeButton) {
+    likeButton.classList.remove("liked");
+    likeButton.setAttribute("aria-pressed", "false");
+  }
+  paintStars(0, 0);
+
   const inputsToClear = [nameInput, emailInput, filmInput, dateInput, commentInput];
   for (const el of inputsToClear) {
     el.dataset.touched = "";
@@ -303,21 +418,33 @@ voteForm.addEventListener("submit", function (event) {
   updateCommentCounter();
 
   // Show success message smoothly using jQuery
+  const likeNote = submittedLike ? " ♥" : "";
   const $banner = $("#vote-success");
   $banner
     .text(
       "Thank you, " +
         submittedName +
-        "! Your vote (" +
+        "! Your rating (" +
         submittedRating +
-        "/5 ★ for " +
+        "/5 ★" +
+        likeNote +
+        " for " +
         submittedFilm +
-        ") has been added to the community poll."
+        ") has been saved and added to the community poll."
     )
     .stop(true, true)
     .hide()
     .slideDown(300);
 });
 
+if (resetVotesBtn) {
+  resetVotesBtn.addEventListener("click", function () {
+    pollVotes = defaultVotes.slice();
+    saveVotes(pollVotes);
+    renderPoll();
+  });
+}
+
 updateCommentCounter();
+paintStars(0, 0);
 renderPoll();
