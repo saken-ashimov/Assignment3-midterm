@@ -195,4 +195,26 @@ $(function () {
   $topBtn.on("click", function () {
     $("html, body").stop(true, false).animate({ scrollTop: 0 }, 420);
   });
+
+  // 6. Auto-close mobile navbar on section link click or tap outside .site-nav
+  function closeMobileMenu() {
+    const menuEl = document.querySelector("#menu");
+    if (!menuEl || !menuEl.classList.contains("show")) {
+      return;
+    }
+    if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
+      bootstrap.Collapse.getOrCreateInstance(menuEl).hide();
+    } else {
+      $(menuEl).removeClass("show");
+      $(".navbar-toggler").addClass("collapsed").attr("aria-expanded", "false");
+    }
+  }
+
+  $(".site-nav .nav-link").on("click", closeMobileMenu);
+
+  $(document).on("click", function (event) {
+    if ($("#menu").hasClass("show") && $(event.target).closest(".site-nav").length === 0) {
+      closeMobileMenu();
+    }
+  });
 });
