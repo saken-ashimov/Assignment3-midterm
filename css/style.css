@@ -423,9 +423,8 @@ body.dark-mode .cast {
   width: 100%;
   aspect-ratio: 16 / 9;
   height: auto;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
-  background-color: #1e2022;
   display: block;
 }
 
